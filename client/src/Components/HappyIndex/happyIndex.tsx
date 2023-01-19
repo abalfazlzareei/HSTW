@@ -6,7 +6,7 @@ export default function HappyIndex() {
   const [idx, setIdx] = useState(0);
   const [yIdx, setYIdx] = useState(0);
 
-  function parseDate(date) {
+  function parseDate(date: Date): string {
     const d = String(date.getDate()).padStart(2, '0');
     const m = String(date.getMonth() + 1).padStart(2, '0');
     const y = String(date.getFullYear()).slice(-2);

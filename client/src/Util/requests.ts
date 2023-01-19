@@ -1,5 +1,10 @@
 const url = 'https://hstwdrop.co';
 
+import { CountryDataType } from "../../Types";
+import { StringNumberArray } from "../../Types";
+import { Country } from "../../Types";
+import React from 'react';
+
 // IMPORITNG THE SETTER FUNCTION AS AN ARGUMENT ALLOWS US
 // TO SKIP AN AWAIT ALL TOGETHER
 
@@ -9,10 +14,16 @@ const url = 'https://hstwdrop.co';
 //   .then(data => setter(data))
 // }
 
-export async function getTodayIndividualData(alphaCode, setter) {
+export async function getTodayIndividualData(
+  alphaCode,
+  setter: React.Dispatch<React.SetStateAction<CountryDataType | undefined>>
+) {
   return fetch(`${url}/today?code=${alphaCode}`)
     .then((response) => response.json())
-    .then((data) => setter(Object.values(data)[0]))
+    .then((data) => {
+      console.log("RETURNED DATA", Object.values(data)[0]);
+      setter(Object.values(data)[0]);
+    })
     .catch((err) => err);
 }
 

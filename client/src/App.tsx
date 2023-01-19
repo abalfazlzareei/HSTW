@@ -8,15 +8,18 @@ import { useState, useEffect } from 'react';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Transparency from './Pages/Transparency';
+import React from 'react';
+
+import { Clicked } from '../Types';
 
 export default function App() {
 
-  const [innerWidth, setInnerWidth] = useState();
-  const [clicked, setClicked] = useState({ name: 'world', 'Alpha-2': 'world' });
-  const [mobile, setMobile] = useState();
-  const [menu, setMenu] = useState(false);
-  const [userCountry, setUserCountry] = useState(false);
-  const [idx, setIdx] = useState();
+  const [innerWidth, setInnerWidth] = useState<number | undefined>(); //change this!
+  const [clicked, setClicked] = useState<Clicked>({ name: 'world', 'Alpha-2': 'world' });
+  const [mobile, setMobile] = useState<boolean | undefined>();
+  const [menu, setMenu] = useState<boolean>(false);
+  const [userCountry, setUserCountry] = useState<boolean>(false);
+  const [idx, setIdx] = useState<string | ''>(); //CHECK THIS  
 
 
   // eslint-disable-next-line no-restricted-globals
@@ -52,7 +55,7 @@ export default function App() {
       setMenu={setMenu}
       userCountry = {userCountry}
       setClicked={setClicked}
-       />
+      />
       :
       ''
       }

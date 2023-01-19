@@ -2,12 +2,13 @@ import './Menu.css';
 import { generateColor } from '../../Util/Utility';
 import { useState, useEffect } from 'react';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
+import React from "react";
 
 export default function Menu({ setMenu, userCountry, idx, setClicked }) {
   
   const imgURL = process.env.PUBLIC_URL + '/assets/32x32/'
   const localArr = JSON.parse(window.localStorage.getItem('arr'));
-  const [list, setList] = useState();
+  const [list, setList] = useState<>();
   const [deleteMode, setDeleteMode] = useState(false);
   const [displayedIndexes, setDisplayIndexes] = useState(
     localArr || [

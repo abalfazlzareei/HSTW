@@ -1,19 +1,21 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Individual.css';
 import { getCountryDetails, getTodayIndividualData } from '../../Util/requests';
 import { generateColor } from '../../Util/Utility';
 
+import { CountryDataType, StringNumberArray, Country, Clicked } from '../../../Types';
+
 export default function Individual({ clicked, scrollFunc = () => {}, mobile }) {
-  const [country, setCountry] = useState();
-  const [topics, setTopics] = useState([]);
-  const [headlines, setHeadlines] = useState([]);
-  const [countryData, setCountryData] = useState();
+  const [country, setCountry] = useState<Country>();
+  const [topics, setTopics] = useState<string[] | undefined>();
+  const [headlines, setHeadlines] = useState<string[] | undefined>();
+  const [countryData, setCountryData] = useState<CountryDataType | undefined>();
 
   useEffect(() => {
-    const arrOfTopics = [];
-    let arrOfHL = [];
+    const arrOfTopics: string[] = [];
+    let arrOfHL: string[] = [];
     if (countryData && countryData.topics) {
-      countryData.topics.forEach((topic) => {
+      countryData.topics.forEach((topic: StringNumberArray) => {
         if (/[a-zA-Z0-9]/.test(topic[0])) {
           arrOfTopics.push(`${topic[0]} [${topic[1]}]`);
         }
