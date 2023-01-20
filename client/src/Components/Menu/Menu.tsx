@@ -31,7 +31,7 @@ export default function Menu({ setMenu, userCountry, idx, setClicked }: MenuProp
   );
 
   const ISO2List = process.env.PUBLIC_URL + '/assets/ISO2.json';
-
+console.log('HHHHHHHHHHHHHHHHHHHHHHHH',process.env.PUBLIC_URL)
   useEffect(() => {
     fetch(ISO2List)
       .then((res) => res.json())
