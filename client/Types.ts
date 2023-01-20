@@ -26,7 +26,25 @@ export type Country = {
   capital: string
 }
 
-export type Clicked {
+export type Clicked = {
   name: string,
   'Alpha-2': string
 }
+
+export type NavbarProps = {
+  mobile: boolean | undefined;
+  setMenu: React.Dispatch<
+    React.SetStateAction<boolean | SetMenuCallback | undefined>
+  >;
+};
+
+export type SetMenuCallback = {
+    (a: boolean): boolean
+  }
+
+export type MenuProps = {
+  setMenu: React.Dispatch<React.SetStateAction<boolean | undefined>>;
+  userCountry: boolean | undefined;
+  idx: string;
+  setClicked: React.Dispatch<React.SetStateAction<Clicked>>;
+};

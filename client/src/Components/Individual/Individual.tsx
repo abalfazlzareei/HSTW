@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Individual.css';
 import { getCountryDetails, getTodayIndividualData } from '../../Util/requests';
+//@ts-ignore
 import { generateColor } from '../../Util/Utility';
 
 import { CountryDataType, StringNumberArray, Country, Clicked } from '../../../Types';

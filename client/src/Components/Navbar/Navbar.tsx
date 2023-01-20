@@ -2,8 +2,11 @@ import './Navbar.css'
 import {Link} from 'react-router-dom'
 import React from "react";
 
+// import PropTypes from "prop-types";
 
-export default function Navbar({mobile, setMenu}) {
+import { NavbarProps } from '../../../Types';
+
+export default function Navbar({ mobile, setMenu }: NavbarProps) {
   return (
     <div id="nav-top-container">
       {mobile ? (
