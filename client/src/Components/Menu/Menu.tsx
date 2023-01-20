@@ -5,24 +5,23 @@ import { useState, useEffect } from 'react';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import React from "react";
 
-import { MenuProps } from '../../../Types';
+import { MenuProps, ISO2 } from '../../../Types';
 
 export default function Menu({ setMenu, userCountry, idx, setClicked }: MenuProps) {
 
   if (!userCountry) return;
   
   const imgURL = process.env.PUBLIC_URL + '/assets/32x32/'
-  console.log(imgURL)
 
   const arrItem: string =
     window.localStorage.getItem("arr") === null
       ? ""
       : window.localStorage.getItem("arr") as string; ;
 
-  const localArr = window.localStorage.getItem(arrItem)
+  const localArr = window.localStorage.getItem(arrItem);
   
-  const [list, setList] = useState();
-  const [deleteMode, setDeleteMode] = useState(false);
+  const [list, setList] = useState<ISO2[] | []>([]);
+  const [deleteMode, setDeleteMode] = useState<boolean>(false);
   const [displayedIndexes, setDisplayIndexes] = useState(
     localArr || [
       { name: 'World', code: 'world' },
@@ -30,8 +29,8 @@ export default function Menu({ setMenu, userCountry, idx, setClicked }: MenuProp
     ]
   );
 
-  const ISO2List = process.env.PUBLIC_URL + '/assets/ISO2.json';
-console.log('HHHHHHHHHHHHHHHHHHHHHHHH',process.env.PUBLIC_URL)
+  const ISO2List: string = process.env.PUBLIC_URL + '/assets/ISO2.json';
+  
   useEffect(() => {
     fetch(ISO2List)
       .then((res) => res.json())

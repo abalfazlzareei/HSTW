@@ -4,9 +4,10 @@ import { getCountryDetails, getTodayIndividualData } from '../../Util/requests';
 //@ts-ignore
 import { generateColor } from '../../Util/Utility';
 
-import { CountryDataType, StringNumberArray, Country, Clicked } from '../../../Types';
+import { CountryDataType, StringNumberArray, Country, Clicked, IndividualProps } from '../../../Types';
 
-export default function Individual({ clicked, scrollFunc = () => {}, mobile }) {
+
+export default function Individual({ clicked, scrollFunc = () => {}, mobile }: IndividualProps) {
   const [country, setCountry] = useState<Country>();
   const [topics, setTopics] = useState<string[] | undefined>();
   const [headlines, setHeadlines] = useState<string[] | undefined>();

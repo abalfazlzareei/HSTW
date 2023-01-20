@@ -18,12 +18,20 @@ export type StringNumberArray = [
 
 export type Country = {
   flag: string, 
-  name: object,
-  currencies: object[],
+  name: Name,
+  currencies: Currencies[],
   languages: string[],
   region: string,
   demonyms: object,
   capital: string
+}
+
+type Name = {
+  official: string
+}
+
+type Currencies = {
+  name: string
 }
 
 export type Clicked = {
@@ -52,4 +60,15 @@ export type MenuProps = {
 export type UserCountry = {
   country_name: string,
   country_code: string
+}
+
+export type ISO2 = {
+  code: string, 
+  name: string
+}
+
+export type IndividualProps = { //check this later
+  clicked: Clicked,
+  scrollFunc: (a: any) => any, 
+  mobile: boolean | undefined
 }
