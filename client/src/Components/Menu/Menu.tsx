@@ -8,10 +8,16 @@ import React from "react";
 import { MenuProps } from '../../../Types';
 
 export default function Menu({ setMenu, userCountry, idx, setClicked }: MenuProps) {
+
+  if (!userCountry) return;
   
   const imgURL = process.env.PUBLIC_URL + '/assets/32x32/'
+  console.log(imgURL)
 
-  const arrItem = window.localStorage.getItem('arr')?.length ? window.localStorage.getItem('arr') : '';
+  const arrItem: string =
+    window.localStorage.getItem("arr") === null
+      ? ""
+      : window.localStorage.getItem("arr") as string; ;
 
   const localArr = window.localStorage.getItem(arrItem)
   
@@ -34,11 +40,12 @@ export default function Menu({ setMenu, userCountry, idx, setClicked }: MenuProp
       });
   }, []);
 
-  function parse(index) {
-    return parseInt(index * 10);
+  function parse(index: string) {
+    const temp: number = Number(index) * 10;
+    return temp;
   }
 
-  function storeToLocaleStorage(arrOfIdx) {
+  function storeToLocaleStorage(arrOfIdx: string[]) {
     const stringified = JSON.stringify(arrOfIdx);
     window.localStorage.setItem('arr', stringified);
   }

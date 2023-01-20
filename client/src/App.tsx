@@ -14,7 +14,7 @@ import About from './Pages/About';
 import Transparency from './Pages/Transparency';
 import React from 'react';
 
-import { Clicked, SetMenuCallback } from '../Types';
+import { Clicked, SetMenuCallback, UserCountry } from '../Types';
 
 
 export default function App() {
@@ -25,7 +25,7 @@ export default function App() {
   const [menu, setMenu] = useState<boolean | SetMenuCallback | undefined>(
     undefined
   );
-  const [userCountry, setUserCountry] = useState<boolean | undefined>(undefined);
+  const [userCountry, setUserCountry] = useState<UserCountry | undefined>(undefined);
   const [idx, setIdx] = useState<string>(''); 
 
 

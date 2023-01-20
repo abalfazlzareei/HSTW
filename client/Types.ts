@@ -44,7 +44,12 @@ export type SetMenuCallback = {
 
 export type MenuProps = {
   setMenu: React.Dispatch<React.SetStateAction<boolean | undefined>>;
-  userCountry: boolean | undefined;
+  userCountry: UserCountry | undefined;
   idx: string;
   setClicked: React.Dispatch<React.SetStateAction<Clicked>>;
 };
+
+export type UserCountry = {
+  country_name: string,
+  country_code: string
+}
