@@ -54,7 +54,11 @@ export async function getDateSpecificIndividualIdx(alphaCode, date, setter) {
 
 export async function getDateSpecificGlobalIdx(
   date: string,
-  setter: React.Dispatch<React.SetStateAction<IDX>>
+  setter: React.Dispatch<
+    React.SetStateAction<{
+      [key: string]: IDX;
+    }>
+  >
 ) {
   return fetch(`${url}/idx?date=${date}`)
     .then((response) => response.json())

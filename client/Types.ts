@@ -62,7 +62,7 @@ export type NavbarProps = {
 export type MenuProps = {
   setMenu: React.Dispatch<React.SetStateAction<boolean>>;
   userCountry: UserCountry | undefined;
-  idx: IDX;
+  idx: { [key: string]: IDX };
   setClicked: React.Dispatch<React.SetStateAction<Clicked>>;
 };
 
@@ -82,3 +82,7 @@ export type IndividualProps = {
   scrollFunc: (a: any) => any;
   mobile: boolean | undefined;
 };
+
+// export type MenuIDX = {
+//   a: string 
+// }

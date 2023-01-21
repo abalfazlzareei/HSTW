@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import React from "react";
 
-import { MenuProps, ISO2, Clicked, IDX } from "../../../Types";
+import { MenuProps, ISO2, Clicked } from "../../../Types";
 
 export default function Menu({
   setMenu,
@@ -52,8 +52,8 @@ export default function Menu({
       });
   }, []);
 
-  function parse(index: string) {
-    const temp: number = Number(index) * 10;
+  function parse(index: number) {
+    const temp: number = index * 10;
     return temp;
   }
 
