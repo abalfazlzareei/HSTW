@@ -97,14 +97,14 @@ export default function Individual({ clicked, scrollFunc = () => {}, mobile }: I
                   <span id="index-title-mobile">
                     {country.name.official}'s happiness :
                     {countryData.idx
-                      ? parseInt(countryData.idx.global * 10)
+                      ? parseInt((countryData.idx.global * 10).toString())
                       : 'Unknown'}
                   </span>
                 ) : (
                   <span id="index-title">
                     Today, {country.name.official} has a happiness score of :
                     {countryData.idx
-                      ? parseInt(countryData.idx.global * 10)
+                      ? Math.floor(countryData.idx.global * 10)
                       : 'Unknown'}
                   </span>
                 )}
@@ -124,7 +124,7 @@ export default function Individual({ clicked, scrollFunc = () => {}, mobile }: I
                       </span>
                     )}
                     <div id="indiv-main-topics" className="indiv-list">
-                      {topics.length ? (
+                      {topics?.length ? (
                         <span>{topics.join(' - ')}</span>
                       ) : (
                         <span>No Data</span>

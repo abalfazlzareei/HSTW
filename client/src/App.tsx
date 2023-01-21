@@ -21,9 +21,9 @@ export default function App() {
 
   const [innerWidth, setInnerWidth] = useState<number | undefined>(); //change this!
   const [clicked, setClicked] = useState<Clicked>({ name: 'world', 'Alpha-2': 'world' });
-  const [mobile, setMobile] = useState<boolean | undefined>(undefined);
-  const [menu, setMenu] = useState<boolean | SetMenuCallback | undefined>(
-    undefined
+  const [mobile, setMobile] = useState<boolean>(false);
+  const [menu, setMenu] = useState< boolean >(
+    false
   );
   const [userCountry, setUserCountry] = useState<UserCountry | undefined>(undefined);
   const [idx, setIdx] = useState<string>(''); 

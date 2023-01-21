@@ -1,5 +1,7 @@
 // const [allAirports, setAllAirports] = useState<Airport[]>([]);
 
+import { string } from "prop-types"
+
 export type CountryDataType = {
   HL: string[],
   idx: {
@@ -22,7 +24,7 @@ export type Country = {
   currencies: Currencies[],
   languages: string[],
   region: string,
-  demonyms: object,
+  demonyms: Demonym,
   capital: string
 }
 
@@ -34,6 +36,15 @@ type Currencies = {
   name: string
 }
 
+type Demonym = {
+  [key: string]: { m?: string; f?: string };
+};
+
+// const obj: Demonym = {
+//   eng: {m: 'asdf', f: 'fdas'},
+//   fre: {m: 'asdf', f: 'asdf'}
+// }
+
 export type Clicked = {
   name: string,
   'Alpha-2': string
@@ -42,7 +53,7 @@ export type Clicked = {
 export type NavbarProps = {
   mobile: boolean | undefined;
   setMenu: React.Dispatch<
-    React.SetStateAction<boolean | SetMenuCallback | undefined>
+    React.SetStateAction<boolean>
   >;
 };
 
@@ -63,8 +74,8 @@ export type UserCountry = {
 }
 
 export type ISO2 = {
-  code: string, 
-  name: string
+  name: string,
+  code: string 
 }
 
 export type IndividualProps = { //check this later
@@ -72,3 +83,7 @@ export type IndividualProps = { //check this later
   scrollFunc: (a: any) => any, 
   mobile: boolean | undefined
 }
+
+// export type DisplayedIndexes = {
+//   ISO2 | string 
+// }

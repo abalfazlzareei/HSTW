@@ -9,23 +9,23 @@ import { MenuProps, ISO2 } from '../../../Types';
 
 export default function Menu({ setMenu, userCountry, idx, setClicked }: MenuProps) {
 
-  if (!userCountry) return;
+  // if (!userCountry) return;
   
   const imgURL = process.env.PUBLIC_URL + '/assets/32x32/'
 
   const arrItem: string =
     window.localStorage.getItem("arr") === null
-      ? ""
+      ? {}
       : window.localStorage.getItem("arr") as string; ;
 
-  const localArr = window.localStorage.getItem(arrItem);
+  const localArr = window.localStorage.getItem(arrItem) as string;
   
-  const [list, setList] = useState<ISO2[] | []>([]);
+  const [list, setList] = useState<ISO2[]>([]); //???
   const [deleteMode, setDeleteMode] = useState<boolean>(false);
-  const [displayedIndexes, setDisplayIndexes] = useState(
+  const [displayedIndexes, setDisplayIndexes] = useState<ISO2[]>(
     localArr || [
       { name: 'World', code: 'world' },
-      { name: userCountry.country_name, code: userCountry.country_code },
+      { name: userCountry?.country_name, code: userCountry?.country_code },
     ]
   );
 
@@ -44,7 +44,7 @@ export default function Menu({ setMenu, userCountry, idx, setClicked }: MenuProp
     return temp;
   }
 
-  function storeToLocaleStorage(arrOfIdx: string[]) {
+  function storeToLocaleStorage(arrOfIdx: ISO2[]) {
     const stringified = JSON.stringify(arrOfIdx);
     window.localStorage.setItem('arr', stringified);
   }
@@ -149,8 +149,6 @@ export default function Menu({ setMenu, userCountry, idx, setClicked }: MenuProp
               <ReactSearchAutocomplete
                 placeholder="Add a Country"
                 key="auto-complete"
-                type="text"
-                id="add-country-field"
                 items={list}
                 onSelect={handleSubmit}
               />
@@ -162,7 +160,7 @@ export default function Menu({ setMenu, userCountry, idx, setClicked }: MenuProp
           </div>
         </div>
       </div>
-      <button id="modal-back" onClick={() => setMenu((m) => !m)}></button>
+      <div id="modal-back" onClick={() => setMenu((m) => !m)}></div>
     </div>
   );
 }
