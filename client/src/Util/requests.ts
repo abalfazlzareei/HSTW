@@ -1,8 +1,7 @@
 const url = 'https://hstwdrop.co';
 
-import { CountryDataType } from "../../Types";
-import { StringNumberArray } from "../../Types";
-import { Country } from "../../Types";
+import { CountryDataType, IDX } from "../../Types";
+
 import React from 'react';
 
 // IMPORITNG THE SETTER FUNCTION AS AN ARGUMENT ALLOWS US
@@ -15,7 +14,7 @@ import React from 'react';
 // }
 
 export async function getTodayIndividualData(
-  alphaCode,
+  alphaCode: string,
   setter: React.Dispatch<React.SetStateAction<CountryDataType | undefined>>
 ) {
   return fetch(`${url}/today?code=${alphaCode}`)
@@ -53,7 +52,10 @@ export async function getDateSpecificIndividualIdx(alphaCode, date, setter) {
   }
 }
 
-export async function getDateSpecificGlobalIdx(date, setter) {
+export async function getDateSpecificGlobalIdx(
+  date: string,
+  setter: React.Dispatch<React.SetStateAction<IDX>>
+) {
   return fetch(`${url}/idx?date=${date}`)
     .then((response) => response.json())
     .then((data) => setter(Object.values(data)[0]))

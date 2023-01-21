@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import { getCountrySpecificPastData } from '../../Util/requests';
+import React from "react";
 
 export default function Graph({clicked, mobile}) {
   const [data, setData] = useState(null);

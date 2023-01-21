@@ -1,40 +1,40 @@
 // const [allAirports, setAllAirports] = useState<Airport[]>([]);
 
-import { string } from "prop-types"
+import { string } from "prop-types";
 
 export type CountryDataType = {
-  HL: string[],
-  idx: {
-    M: number,
-    N: number,
-    Nu: number,
-    P: number,
-    global: number
-  },
-  topics?: StringNumberArray[]
-}
+  HL: string[];
+  idx: IDX;
+  topics?: StringNumberArray[];
+};
 
-export type StringNumberArray = [
-  string, number
-]
+export type IDX = {
+  M: number;
+  N: number;
+  Nu: number;
+  P: number;
+  global: number;
+};
+
+export type StringNumberArray = [string, number];
 
 export type Country = {
-  flag: string, 
-  name: Name,
-  currencies: Currencies[],
-  languages: string[],
-  region: string,
-  demonyms: Demonym,
-  capital: string
-}
+  flag: string;
+  name: Name;
+  currencies: Currencies[];
+  languages: string[];
+  region: string;
+  demonyms: Demonym;
+  capital: string;
+};
 
 type Name = {
-  official: string
-}
+  official: string;
+};
 
 type Currencies = {
-  name: string
-}
+  name: string;
+};
 
 type Demonym = {
   [key: string]: { m?: string; f?: string };
@@ -46,44 +46,39 @@ type Demonym = {
 // }
 
 export type Clicked = {
-  name: string,
-  'Alpha-2': string
-}
+  name: string;
+  "Alpha-2": string;
+};
 
 export type NavbarProps = {
   mobile: boolean | undefined;
-  setMenu: React.Dispatch<
-    React.SetStateAction<boolean>
-  >;
+  setMenu: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export type SetMenuCallback = {
-    (a: boolean): boolean
-  }
+// export type SetMenuCallback = {
+//   (a: boolean): boolean;
+// };
 
 export type MenuProps = {
-  setMenu: React.Dispatch<React.SetStateAction<boolean | undefined>>;
+  setMenu: React.Dispatch<React.SetStateAction<boolean>>;
   userCountry: UserCountry | undefined;
-  idx: string;
+  idx: IDX;
   setClicked: React.Dispatch<React.SetStateAction<Clicked>>;
 };
 
 export type UserCountry = {
-  country_name: string,
-  country_code: string
-}
+  country_name: string;
+  country_code: string;
+};
 
 export type ISO2 = {
-  name: string,
-  code: string 
-}
+  name: string;
+  code: string;
+};
 
-export type IndividualProps = { //check this later
-  clicked: Clicked,
-  scrollFunc: (a: any) => any, 
-  mobile: boolean | undefined
-}
-
-// export type DisplayedIndexes = {
-//   ISO2 | string 
-// }
+export type IndividualProps = {
+  //check this later
+  clicked: Clicked;
+  scrollFunc: (a: any) => any;
+  mobile: boolean | undefined;
+};

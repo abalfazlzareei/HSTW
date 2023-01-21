@@ -1,4 +1,6 @@
-export function parseDate(date) {
+import {IDX} from "../../Types"
+
+export function parseDate(date: Date) {
   const d = String(date.getDate()).padStart(2, '0');
   const m = String(date.getMonth() + 1).padStart(2, '0');
   const y = String(date.getFullYear()).slice(-2);
@@ -6,7 +8,7 @@ export function parseDate(date) {
   return `${d}-${m}-${y}`
 }
 
-export function generateColor(col, tansparency = 1 , currentState = undefined) {
+export function generateColor(col: IDX, tansparency: number = 1 , currentState: string = "") {
   
   let colorReturn;
 
@@ -32,11 +34,11 @@ export function generateColor(col, tansparency = 1 , currentState = undefined) {
     }
     
     if (currentState === 'hover') {
-      Object.keys(colObj).forEach(rgb => colObj[rgb] += 50)
+      Object.keys(colObj).forEach(rgb => colObj[rgb as keyof typeof colObj] += 50)
       colorReturn = `rgba(${colObj.r},${colObj.g + 50},${colObj.b + 50}, ${tansparency})`;
     
     } else if (currentState === 'click') {
-      Object.keys(colObj).forEach(rgb => colObj[rgb] += 100)
+      Object.keys(colObj).forEach(rgb => colObj[rgb as keyof typeof colObj] += 100)
     }
     
     colorReturn = `rgba(${colObj.r},${colObj.g},${colObj.b}, ${tansparency})`;

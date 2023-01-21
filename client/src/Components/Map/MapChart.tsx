@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Map.css';
 import Globe from 'react-globe.gl'
 import { getDateSpecificGlobalIdx } from '../../Util/requests';
