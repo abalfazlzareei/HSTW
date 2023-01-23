@@ -1,6 +1,6 @@
 // const [allAirports, setAllAirports] = useState<Airport[]>([]);
 
-import { string } from "prop-types";
+import { bool, string } from "prop-types";
 
 export type CountryDataType = {
   HL: string[];
@@ -88,7 +88,23 @@ export type IndividualProps = {
 // }
 
 export type MapChart = {
-  clickSet: ,
+  clickSet: Clicked,  //finish this
   mobile: boolean,
   innerWidth: number
+}
+
+export type IDXObj = {
+  idx: { [key: string]: IDX }
+}
+
+export type CountrySpecificPastData = DataDate[];
+
+export type DataDate = {
+  data: IDX,
+  date: string
+}
+
+export type Graph = {
+  clicked: Clicked,
+  mobile: boolean
 }

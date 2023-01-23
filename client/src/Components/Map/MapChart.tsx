@@ -7,10 +7,12 @@ import { generateColor, parseDate } from '../../Util/Utility';
 
 const geoUrl = process.env.PUBLIC_URL + '/assets/Topology.json';
 
-export default function MapChart({ clickSet, mobile, innerWidth }) {
+import { IDXObj, MapChart } from '../../../Types';
+
+export default function MapChart({ clickSet, mobile, innerWidth }: MapChart) {
 
   const globeEl = useRef();
-  const [idx, setIdx] = useState();
+  const [idx, setIdx] = useState<IDXObj>();
   const [countries, setCountries] = useState({ features: []});
   const [hoverD, setHoverD] = useState()
   const [clickD, setClickD] = useState()

@@ -1,6 +1,6 @@
 const url = 'https://hstwdrop.co';
 
-import { CountryDataType, IDX } from "../../Types";
+import { CountryDataType, IDXObj, UserCountry, CountrySpecificPastData, DataDate } from "../../Types";
 
 import React from 'react';
 
@@ -53,15 +53,11 @@ export async function getDateSpecificIndividualIdx(alphaCode: string, date: stri
 
 export async function getDateSpecificGlobalIdx(
   date: string,
-  setter: React.Dispatch<
-    React.SetStateAction<{
-      [key: string]: IDX;
-    }>
-  >
+  setter: React.Dispatch<React.SetStateAction<IDXObj | undefined>>
 ) {
   return fetch(`${url}/idx?date=${date}`)
     .then((response) => response.json())
-    .then((data) => setter(Object.values(data)[0]))
+    .then((data) => setter(Object.values(data)[0] as IDXObj))
     .catch((err) => err);
 }
 
@@ -72,7 +68,7 @@ export async function getWorldToday(setter) {
     .catch((err) => err);
 }
 
-export async function getCountryDetails(alphaCode) {
+export async function getCountryDetails(alphaCode: string) {
   return fetch(
     `https://restcountries.com/v3.1/alpha/${alphaCode}?fields=name,flag,capital,currencies,languages,region,capital,demonyms`
   )
@@ -89,24 +85,24 @@ export async function getWorldPop() {
     .catch((err) => err);
 }
 
-export async function getUserCountry(setter) {
+export async function getUserCountry(setter: React.Dispatch<React.SetStateAction<UserCountry | undefined>>) {
   return fetch('https://ipapi.co/json/')
     .then((response) => response.json())
     .then((data) => setter({country_name : data.country_name, country_code : data.country_code}));
 }
 
-export async function getCountrySpecificPastData(country, days, setter) {
+export async function getCountrySpecificPastData(country: string, days: number, setter: React.Dispatch<React.SetStateAction<CountrySpecificPastData | undefined>>) {
   return fetch(`${url}/past?code=${country}&days=${days}`)
     .then((response) => response.json())
     .then(data => {
       data = data.reverse()
       console.log(data)
       const chartData = {
-        labels: data.map((item) => item.date),
+        labels: data.map((item: DataDate) => item.date),
         datasets: [
           {
             label: "Happiness Index",
-            data: data.map((item) => item.data.global * 10),
+            data: data.map((item: DataDate) => item.data.global * 10),
             backgroundColor: "rgba(75,192,192,0.4)",
             borderColor: "rgba(75,192,192,1)",
           },

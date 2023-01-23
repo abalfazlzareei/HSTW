@@ -4,9 +4,10 @@ import 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import { getCountrySpecificPastData } from '../../Util/requests';
 import React from "react";
+import { CountrySpecificPastData, Graph } from '../../../Types';
 
-export default function Graph({clicked, mobile}) {
-  const [data, setData] = useState(null);
+export default function Graph({clicked, mobile}: Graph) {
+  const [data, setData] = useState<CountrySpecificPastData>();
 
   useEffect(() => {
     getCountrySpecificPastData(clicked['Alpha-2'], 4, setData)
