@@ -86,3 +86,9 @@ export type IndividualProps = {
 // export type MenuIDX = {
 //   a: string 
 // }
+
+export type MapChart = {
+  clickSet: ,
+  mobile: boolean,
+  innerWidth: number
+}

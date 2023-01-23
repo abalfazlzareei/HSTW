@@ -10,7 +10,7 @@ const geoUrl = process.env.PUBLIC_URL + '/assets/Topology.json';
 export default function MapChart({ clickSet, mobile, innerWidth }) {
 
   const globeEl = useRef();
-  const [idx, setIdx] = useState(false);
+  const [idx, setIdx] = useState();
   const [countries, setCountries] = useState({ features: []});
   const [hoverD, setHoverD] = useState()
   const [clickD, setClickD] = useState()
@@ -76,7 +76,7 @@ export default function MapChart({ clickSet, mobile, innerWidth }) {
       polygonLabel={({ properties: d }) => `${d.ADMIN} | ${d.ISO_A2}`}
       />
       </div>
-     }
-     </>
+    }
+    </>
   );
 }

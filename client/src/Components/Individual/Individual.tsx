@@ -7,7 +7,7 @@ import { generateColor } from '../../Util/Utility';
 import { CountryDataType, StringNumberArray, Country, Clicked, IndividualProps } from '../../../Types';
 
 
-export default function Individual({ clicked, scrollFunc = () => {}, mobile }: IndividualProps) {
+export default function Individual({ clicked, mobile }: IndividualProps) {
   const [country, setCountry] = useState<Country>();
   const [topics, setTopics] = useState<string[] | undefined>();
   const [headlines, setHeadlines] = useState<string[] | undefined>();
@@ -32,9 +32,6 @@ export default function Individual({ clicked, scrollFunc = () => {}, mobile }: I
     if (clicked['Alpha-2']) {
       fetchCountry();
       getTodayIndividualData(clicked['Alpha-2'], setCountryData);
-      if (clicked['Alpha-2'] !== 'world') {
-        scrollFunc();
-      }
     }
   }, [clicked]);
 

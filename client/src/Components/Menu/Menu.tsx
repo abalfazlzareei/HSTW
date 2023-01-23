@@ -92,6 +92,7 @@ export default function Menu({
             try {
               return (
                 <button
+                  type="button"
                   onClick={() =>
                     deleteMode
                       ? handleDelete({

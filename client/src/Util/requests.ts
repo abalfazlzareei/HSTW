@@ -20,27 +20,26 @@ export async function getTodayIndividualData(
   return fetch(`${url}/today?code=${alphaCode}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log("RETURNED DATA", Object.values(data)[0]);
-      setter(Object.values(data)[0]);
+      setter(Object.values(data)[0] as CountryDataType);
     })
     .catch((err) => err);
 }
 
-export async function getDateSpecificGlobalData(date, setter) {
+export async function getDateSpecificGlobalData(date: string, setter: ) {
   return fetch(`${url}/request?date=${date}`)
     .then((response) => response.json())
     .then((data) => setter(Object.values(data)))
     .catch((err) => err);
 }
 
-export async function getDateSpecificIndividualData(alphaCode, date, setter) {
+export async function getDateSpecificIndividualData(alphaCode: string, date: string, setter) {
   return fetch(`${url}/request?code=${alphaCode}&date=${date}`)
     .then((response) => response.json())
     .then((data) => JSON.parse(data))
     .catch((err) => err);
 }
 
-export async function getDateSpecificIndividualIdx(alphaCode, date, setter) {
+export async function getDateSpecificIndividualIdx(alphaCode: string, date: string, setter) {
   try {
     return fetch(`${url}/idx?code=${alphaCode}&date=${date}`)
     .then((response) => response.json())
