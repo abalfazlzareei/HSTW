@@ -32,14 +32,14 @@ export async function getDateSpecificGlobalData(date: string, setter: ) {
     .catch((err) => err);
 }
 
-export async function getDateSpecificIndividualData(alphaCode: string, date: string, setter) {
-  return fetch(`${url}/request?code=${alphaCode}&date=${date}`)
-    .then((response) => response.json())
-    .then((data) => JSON.parse(data))
-    .catch((err) => err);
-}
+// export async function getDateSpecificIndividualData(alphaCode: string, date: string, setter) {
+//   return fetch(`${url}/request?code=${alphaCode}&date=${date}`)
+//     .then((response) => response.json())
+//     .then((data) => JSON.parse(data))
+//     .catch((err) => err);
+// }
 
-export async function getDateSpecificIndividualIdx(alphaCode: string, date: string, setter) {
+export async function getDateSpecificIndividualIdx(alphaCode: string, date: string, setter: React.Dispatch<React.SetStateAction<IDX | undefined>>) {
   try {
     return fetch(`${url}/idx?code=${alphaCode}&date=${date}`)
     .then((response) => response.json())
