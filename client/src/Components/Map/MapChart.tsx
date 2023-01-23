@@ -1,15 +1,18 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Map.css';
 import Globe from 'react-globe.gl'
 import { getDateSpecificGlobalIdx } from '../../Util/requests';
+//@ts-ignore
 import { generateColor, parseDate } from '../../Util/Utility';
 
 const geoUrl = process.env.PUBLIC_URL + '/assets/Topology.json';
 
-export default function MapChart({ clickSet, mobile, innerWidth }) {
+import { IDXObj, MapChart } from '../../../Types';
+
+export default function MapChart({ clickSet, mobile, innerWidth }: MapChart) {
 
   const globeEl = useRef();
-  const [idx, setIdx] = useState(false);
+  const [idx, setIdx] = useState<IDXObj>();
   const [countries, setCountries] = useState({ features: []});
   const [hoverD, setHoverD] = useState()
   const [clickD, setClickD] = useState()
@@ -75,7 +78,7 @@ export default function MapChart({ clickSet, mobile, innerWidth }) {
       polygonLabel={({ properties: d }) => `${d.ADMIN} | ${d.ISO_A2}`}
       />
       </div>
-     }
-     </>
+    }
+    </>
   );
 }

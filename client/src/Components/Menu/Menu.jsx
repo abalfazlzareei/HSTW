@@ -20,10 +20,10 @@ export default function Menu({ setMenu, userCountry, idx, setClicked }) {
 
   useEffect(() => {
     fetch(ISO2List)
-      .then((res) => res.json())
-      .then((codes) => {
-        setList(codes);
-      });
+    .then((res) => res.json())
+    .then((codes) => {
+      setList(codes);
+    });
   }, []);
 
   function parse(index) {
